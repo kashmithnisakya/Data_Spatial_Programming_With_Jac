@@ -31,8 +31,7 @@ walker add_memory{
 
 
 walker related_memory{
-
-
+    can check_related_nodes with `root entry;
 }
 
 
@@ -71,4 +70,6 @@ with entry:__main__{
                     where="university of moratuwa",
                     what="creat a node"
     );
+
+    ids = root spawn related_memory();
 }
