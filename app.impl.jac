@@ -47,13 +47,9 @@
 }
 
 
-
-
-
-
 :walker:related_memory:can:travls_graph{
     # get all the unique dates from the nodes
-    all_nodes = [-->];
+    all_nodes =  [-->];
     visit all_nodes;
     }
 
@@ -61,7 +57,7 @@
 :walker:related_memory:can:check_related_nodes{
     nodes = [here-:related:when=="2024-04-30":->];
     if nodes{
-        print("nodes with related edges:",nodes);
+        print("\nnodes with related edges:",nodes);
         return nodes;
     }
 }
