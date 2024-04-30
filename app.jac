@@ -31,7 +31,11 @@ walker add_memory{
 
 
 walker related_memory{
-    can check_related_nodes with `root entry;
+    can travls_graph with `root entry;
+
+    can check_related_nodes with memory entry;
+
+
 }
 
 

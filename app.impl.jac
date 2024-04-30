@@ -32,8 +32,14 @@
         if number_of_realated_nodes >1{
             for i in range(number_of_realated_nodes){
                 for j in range(i+1,number_of_realated_nodes){
+                    
+                    if ([related_nodes[i] -:related:when==related_date:-> related_nodes[j]]){
+                        print("### edge is already there!");
+                    }
+                    else{
                         related_nodes[i] +:related:when=related_date:+> related_nodes[j];
                         print(f"$$$ created special edge between {related_nodes[i].id} and {related_nodes[j].id}");
+                        }
                 }
             }
         }
@@ -41,15 +47,22 @@
 }
 
 
-:walker:related_memory:can:check_related_nodes{
-    nodes = [-->];
-    visit nodes;
-    reated_nodes = [-:related:when=="2024-04-30":->];
-    print("\nrelated nodes:",reated_nodes);
-    ids:list =[];
-    for n in reated_nodes{
-        ids.append(n.id);
+
+
+
+
+:walker:related_memory:can:travls_graph{
+    # get all the unique dates from the nodes
+    all_nodes = [-->];
+    visit all_nodes;
     }
-    print("\nrelated noded ids:",ids);
-    return ids;
+
+
+:walker:related_memory:can:check_related_nodes{
+    nodes = [here-:related:when=="2024-04-30":->];
+    if nodes{
+        print("nodes with related edges:",nodes);
+        return nodes;
+    }
 }
+
