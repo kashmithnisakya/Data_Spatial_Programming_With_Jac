@@ -55,7 +55,7 @@ with entry:__main__{
                     what="creat a node"
     );
 
-    # node 01
+    # node 02
     root spawn add_memory(
                     id = uuid.uuid4().hex,
                     summary="tetsing memory node 02",
@@ -75,5 +75,8 @@ with entry:__main__{
                     what="creat a node"
     );
 
-    ids = root spawn related_memory();
+    related_node = root spawn related_memory(); 
+
+    print("\n######### dotgen code #########\n");
+    print(dotgen(root));
 }

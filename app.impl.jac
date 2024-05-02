@@ -1,4 +1,5 @@
 :walker:add_memory:can:create_node{
+    print("\n######### add memory is called! #########");
     # creating new node 
     here ++> memory(
         id = self.id,
@@ -48,17 +49,26 @@
 
 
 :walker:related_memory:can:travls_graph{
+    print("\n######### travel graph is called! #########");
     # get all the unique dates from the nodes
-    all_nodes =  [-->];
+    all_nodes = [-->];
     visit all_nodes;
+    print("\n### visited all nodes!");
+    for n in all_nodes{
+        print("### node details:",n);
     }
+}
 
 
 :walker:related_memory:can:check_related_nodes{
-    nodes = [here-:related:when=="2024-04-30":->];
-    if nodes{
-        print("\nnodes with related edges:",nodes);
-        return nodes;
+    print("\n### checking related nodes!");
+    if ([here -:related:when==here.when:->]){
+        print("### related nodes are there!");
+        print("id:",here.id);
+        return here.id;
+    }
+    else{
+        print("### no related nodes are there!");
     }
 }
 
