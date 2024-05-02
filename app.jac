@@ -40,7 +40,7 @@ walker related_memory{
 
 
 edge related {
-    has when: str = "";
+    has when: str ="" ;
 }
 
 
