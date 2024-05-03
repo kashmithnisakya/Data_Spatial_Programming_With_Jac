@@ -65,7 +65,7 @@
     if ([here -:related:when==here.when:->]){
         print("### related nodes are there!");
         print("id:",here.id);
-        return here.id;
+        self.id = here.id;
     }
     else{
         print("### no related nodes are there!");

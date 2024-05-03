@@ -31,10 +31,11 @@ walker add_memory{
 
 
 walker related_memory{
+    has id: str= None;
+    
     can travls_graph with `root entry;
 
     can check_related_nodes with memory entry;
-
 
 }
 
@@ -75,7 +76,8 @@ with entry:__main__{
                     what="creat a node"
     );
 
-    related_node = root spawn related_memory(); 
+    node_id:str = root spawn related_memory(); 
+    print("id:", node_id.id);
 
     print("\n######### dotgen code #########\n");
     print(dotgen(root));

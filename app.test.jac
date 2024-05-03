@@ -1,7 +1,7 @@
 test test_add_memory_walker{
 
     created_node = root spawn add_memory(
-                    id = uuid.uuid4().hex,
+                    id = "105570e475bd42799d79a8d047bc4d6a",
                     summary="tetsing memory node 01",
                     when="2024-04-30",
                     who="kashmith",
@@ -15,7 +15,6 @@ test test_add_memory_walker{
     assert created_node.where=="university of moratuwa";
     assert created_node.what=="creat a node";
 
-
 }
 
 
@@ -23,7 +22,7 @@ test test_add_memory_walker{
 test test_get_related_memory_walker{
 
     root spawn add_memory(
-                    id = uuid.uuid4().hex,
+                    id = "67640daea0584c758d856b057ccc7637",
                     summary="tetsing memory node 02",
                     when="2024-04-30",
                     who="nisakya",
@@ -32,6 +31,6 @@ test test_get_related_memory_walker{
     );
 
     
-    related_id = root spawn related_memory(); 
-    print(related_id.check_related_nodes);
+    node_id:str = root spawn related_memory(); 
+    assert node_id.id == "67640daea0584c758d856b057ccc7637" or "105570e475bd42799d79a8d047bc4d6a";
 }
