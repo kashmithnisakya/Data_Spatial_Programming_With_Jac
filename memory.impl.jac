@@ -21,3 +21,14 @@
                 );
             }
         }
+
+:walker:genarate_summery:can:visit_memory{
+    visit [-->];
+}
+
+
+:walker:genarate_summery:can:replace_summery{
+    date: list = here.when;
+    new_summery = genarate_summery_content(when=date);
+    here.summary = new_summery;
+}
