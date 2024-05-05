@@ -2,6 +2,7 @@ import: py json;
 import: py from openai, OpenAI;
 import: py os;
 import:py from dotenv, load_dotenv;
+import: py from datetime, datetime;
 
 
 obj llm {
@@ -15,21 +16,21 @@ obj llm {
                        ],
                    temperature=0.7
                     ).choices[0].message.content;
- 
     }
 }
 
-glob llm = llm();
+glob llm_1 = llm();
 
 
+can 'genarate summery using given list of small summeries'
+    genarate_summery_content(summery: 'list of samll summeies': list) -> 'summery of all of the samll summeries': str by llm_1();
 
-can 'genarate summery to the given date'
-    genarate_summery_content(when: 'date that memory happend': str) -> 'summery': str by llm();
 
+can process_dates(date_list:list) -> list;
 
 node memory {
     has summary: str;
-    has when: list;
+    has when: str;
     has who: list;
     has where: list;
     has what: list;
@@ -48,10 +49,19 @@ walker regenerate_graph {
     can load_file with `root entry;
 }
 
-walker genarate_summery{
+walker filter_memory {
+    has dates: list =[];
+
+    can visit_memory with `root entry;
+}
+
+
+walker gererate_summery{
+    has date_list: list;
+    has list_of_summery: list = [];
+
     can visit_memory with `root entry;
 
-    can replace_summery with memory entry;
 }
 
 
@@ -64,7 +74,14 @@ with entry {
 
     root spawn regenerate_graph(file_name = file_name);
 
-    root spawn genarate_summery();
+    date_list:list = root spawn filter_memory();
+    dates:list = process_dates(date_list.dates);
+
+    summery_list = root spawn gererate_summery(date_list = dates);
+
+    summery = genarate_summery_content(summery = summery_list.list_of_summery);
+    print("Summery of the last five momories:\n");
+    print(summery);
 
     print("\n######### dotgen code #########\n");
     print(dotgen(root));
