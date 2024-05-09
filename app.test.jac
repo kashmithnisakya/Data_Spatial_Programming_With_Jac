@@ -1,6 +1,6 @@
 test test_add_memory_walker{
 
-    created_node = root spawn add_memory(
+    walker_obj = root spawn add_memory(
                     id = "105570e475bd42799d79a8d047bc4d6a",
                     summary="tetsing memory node 01",
                     when="2024-04-30",
@@ -9,12 +9,12 @@ test test_add_memory_walker{
                     what="creat a node"
     );
 
-    assert created_node.summary=="tetsing memory node 01";
-    assert created_node.when=="2024-04-30";
-    assert created_node.who=="kashmith";
-    assert created_node.where=="university of moratuwa";
-    assert created_node.what=="creat a node";
-
+    assert walker_obj.created_node[0].id=="105570e475bd42799d79a8d047bc4d6a";
+    assert walker_obj.created_node[0].summary=="tetsing memory node 01";
+    assert walker_obj.create_node[0].when=="2024-04-30";
+    assert walker_obj.create_node[0].who=="kashmith";
+    assert walker_obj.create_node[0].where=="university of moratuwa";
+    assert walker_obj.create_node[0].what=="creat a node";
 }
 
 

@@ -1,7 +1,7 @@
 :walker:add_memory:can:create_node{
     print("\n######### add memory is called! #########");
     # creating new node 
-    here ++> memory(
+    self.created_node = here ++> memory(
         id = self.id,
         summary = self.summary,
         when = self.when,

@@ -20,6 +20,7 @@ walker add_memory{
     has who: str;
     has where: str;
     has what: str;
+    
 
     # create a new node 
     can create_node with `root entry;
